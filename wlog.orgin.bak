@@ -1,0 +1,17 @@
+g_shdaily_path="/ape/ImRoBot5/Dev/cvs/ImRoBot5/shdaily/cgi"
+g_baspath_135="/ape/ImRoBot5/Dev/cvs/ImRoBot5/bas/cgi"
+g_baspath_136="/ape/Dev/cvs/ImRoBot5/bas/cgi"
+g_dianxin="/var/www/html/telhtm"
+g_bas="/var/www/cgi-bin"
+g_wangkangluo1="/ape/ImRoBot5/wangkangluo1"
+g_passwd="apeadmin"
+g_cout_136="ape@192.168.1.136"
+g_cout_135="ape@192.168.1.135"
+g_limit=4    #打开终端屏幕数量
+g_tail=wssh1.tail  #调试跟踪输出文件
+#echo $l_statu >>$g_tail
+
+
+#gnome-terminal -e "sshpass -p "apeadmin" ssh ape@192.168.1.135"
+gnome-terminal --window -e "bash -c \"sshpass -p $g_passwd ssh -tt $g_cout_136 'cd /ape' \""
+#sshpass -p $g_passwd  ssh -tt $g_cout_136

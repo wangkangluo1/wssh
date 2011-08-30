@@ -1,0 +1,9 @@
+case $1 in
+1)
+  echo "Good Morning!";;
+  2)
+    echo "Good Afternoon!";;
+    3)
+      echo "Sorry, $YES_OR_NO not recognized. Enter yes or no."
+        exit 1;;
+        esac

@@ -1,0 +1,4 @@
+g_count_135="ape@192.168.1.135"
+g_passwd="apeadmin"
+
+echo " "|sudo -S sshpass -p $g_passwd  scp ape@192.168.1.135:/var/www/html/telhtm/js/tel.js ~/

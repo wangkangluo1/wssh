@@ -1,0 +1,2 @@
+echo " "|sudo -S cp -r /var/cache/apt/archives /media/Elements/ubuntux64
+

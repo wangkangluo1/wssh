@@ -1,0 +1,8 @@
+g_count_135="ape@192.168.1.135"
+g_passwd="apeadmin"
+g_path=/ape/ImRoBot5/wangkangluo1
+
+sshpass -p "apeadmin" scp  ape@192.168.1.135:/ape/ImRoBot5/wangkangluo1/eclipse-php-helios-SR2-linux-gtk-x86_64.tar.gz  ~/
+
+#sshpass -p "apeadmin" scp -r ape@192.168.1.135:/ape/ImRoBot5/wangkangluo1/$1  ~/
+

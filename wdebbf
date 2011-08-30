@@ -1,0 +1,3 @@
+fi[ $1 = 1 ]
+  cp /var/cache/apt/archives/$2 /media/Elements/ubuntux64/archives
+fi

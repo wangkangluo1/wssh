@@ -1,0 +1,81 @@
+g_shdaily_path="/ape/ImRoBot5/Dev/cvs/ImRoBot5/shdaily/cgi"
+g_baspath_135="/ape/ImRoBot5/Dev/cvs/ImRoBot5/bas/cgi"
+g_baspath_136="/ape/Dev/cvs/ImRoBot5/bas"
+g_wangkangluo1="~/wangkangluo1"
+g_passwd="apeadmin"
+g_cout="ape@192.168.1.136"
+g_limit=4    #打开终端屏幕数量
+g_tail=wssh1.tail  #调试跟踪输出文件
+#echo $l_statu >>$g_tail
+
+
+fun_main( )
+{
+    local l_statu=`fun_jus_mode $1 $2`
+    echo $l_statu >>$g_tail
+}
+
+fun_jus_mode( )
+{
+    local l_str_back
+    local l_jud
+    local l_can_num=`fun_calu_num $1 $2`
+    case $l_can_num in
+    0)
+       l_str_back="null"
+       ;;
+    1)
+       l_jud=`fun_jus_ifstr $1`
+       if [ $l_jud = "str" ]
+       then
+          l_str_back="cd_defalut"
+       else
+          l_str_back="cd_defalut_num"
+       fi
+      ;;
+    2)
+       l_str_back="ok"
+       ;;
+    esac
+    echo $l_str_back
+}
+
+fun_jus_ifstr( )
+{
+    local l_statu
+    if [[ $1 != *[^0-9]* ]]&&[[ $1 != 0* ]]
+    then
+        l_statu="num"
+    else
+        l_statu="str"
+    fi
+    echo $l_statu
+}
+
+
+fun_calu_num( )
+{
+    local l_str_back
+    local l_i=0
+
+    while [ 1 -eq 1 ]
+    do
+       if [ $# -eq $l_i ]
+       then
+          l_str_back=$l_i
+          break
+        //return 0
+       fi
+       l_i=$(($l_i+1))
+    done
+    
+    echo $l_str_back
+}
+
+fun_cd_bas( )
+{
+    gnome-terminal -e "bash -c \"sshpass -p $g_passwd ssh -tt $g_cout 'cd $g_baspath136 && /bin/bash' \""
+}
+
+fun_main $1 $2 $3
+

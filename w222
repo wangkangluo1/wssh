@@ -1,0 +1,7 @@
+
+g_passwd=droycsAuv'
+g_count=ape@222.68.223.242
+g_path_136=~/
+
+gnome-terminal --tab -e "bash -c \"sshpass -p $g_passwd ssh -tt $g_count 'cd $g_path_136  && /bin/bash' \"" --tab -e "bash -c \"sshpass -p $g_passwd ssh -tt $g_count 'cd $g_path_136  && /bin/bash' \"" --tab -e "bash -c \"sshpass -p $g_passwd ssh -tt $g_count 'cd $g_path_136  && /bin/bash' \""
+

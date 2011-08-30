@@ -1,0 +1,89 @@
+
+shdailypath="/ape/ImRoBot5/Dev/cvs/ImRoBot5/shdaily/cgi"
+baspath="/ape/ImRoBot5/Dev/cvs/ImRoBot5/bas/cgi"
+wangkangluo1="~/wangkangluo1"
+passwd="apeadmin"
+cout="ape@192.168.1.135"
+
+if [  -d $1 ]
+then
+    gnome-terminal -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd ~/wangkangluo1 && /bin/bash' \""
+exit 0
+fi
+
+if [[ $1 != *[^0-9]* ]]&&[[ $1 != 0* ]] #判断是整数还是字符串
+then
+    LIMIT=8  #上限   
+    a=0
+    b=$1
+    b=$(($b-1))
+    if [ $1 -le "$LIMIT" ]
+    then
+       while [ $a -le $b ]
+       do
+       a=$(($a+1))
+       gnome-terminal -e "sshpass -p $passwd ssh $cout"
+       done
+    fi
+    exit 0
+else
+    if [ $1 = "sh" ]  #打开shdaily工作空间
+    then
+         mode=$2
+         gnome-terminal --window -e "sshpass -p $passwd ssh $cout -t vim $mode $shdailypath/shdailyFCGI.c  "  --tab -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd $shdailypath && /bin/bash' \""
+         gnome-terminal --window -e "sshpass -p $passwd ssh $cout -t vim $mode $shdailypath/eggDAO.c  " --tab -e "sshpass -p $passwd ssh $cout -t vim $mode $shdailypath/eggDAO.h  " --tab -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd $shdailypath && /bin/bash' \""
+         gnome-terminal --window -e "sshpass -p $passwd ssh $cout -t vim $mode $shdailypath/basSearchOp.c  " --tab -e "sshpass -p $passwd ssh $cout -t vim  $mode $shdailypath/basSearchOp.h  "   --tab -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd $shdailypath && /bin/bash' \"" #--tab -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd /var/www/cgi-bin' \""
+        #" --tab -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd $shdailypath && /bin/bash' \""  
+        gnome-terminal --window -e "sshpass -p $passwd ssh $cout -t gdb $shdailypath/shdaily.fcgi  "  --tab -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd $shdailypath/../ && /bin/bash' \""
+         # gnome-terminal -e "sshpass -p $passwd ssh $cout"    
+     
+    fi    
+    
+    if [ $1 = "bas" ] #打开bas工作空间
+    then 
+        mode=$2
+        gnome-terminal --window -e "sshpass -p $passwd ssh $cout -t vim $mode $baspath/basFCGI.c  "  --tab -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd $baspath && /bin/bash' \""
+         gnome-terminal --window -e "sshpass -p $passwd ssh $cout -t vim $mode $baspath/eggDAO.c  " --tab -e "sshpass -p $passwd ssh $cout -t vim $mode $baspath/eggDAO.h  " --tab -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd $baspath && /bin/bash' \""
+         gnome-terminal --window -e "sshpass -p $passwd ssh $cout -t vim $mode $baspath/basSearchOp.c  " --tab -e "sshpass -p $passwd ssh $cout -t vim $mode $baspath/basSearchOp.h  " --tab -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd $baspath && /bin/bash' \""
+         gnome-terminal --window -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd $baspath && /bin/bash' \""  --tab -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd $baspath/../ && /bin/bash' \""
+         #gnome-terminal --window -e "sshpass -p $passwd ssh $cout -t gdb /ape/ImRoBot5/Dev/cvs/ImRoBot5/shdaily/cgi/bas.fcgi  "  --tab -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd $baspath/../ && /bin/bash' \""
+
+    fi
+    
+    if [ $1 = "cd" ] 
+    then 
+        if [ -d $2 ] #进入cvs目录
+        then
+            echo "3" 
+        else         #进入相应的项目目录
+            if [ $2 = "sh" ]
+            then 
+                gnome-terminal -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd /ape/ImRoBot5/Dev/cvs/ImRoBot5/shdaily/cgi && /bin/bash' \""
+            fi
+            if [ $2 = "bas" ]
+            then 
+                gnome-terminal -e "bash -c \"sshpass -p $passwd ssh -tt $cout 'cd /ape/ImRoBot5/Dev/cvs/ImRoBot5/bas/cgi && /bin/bash' \""
+            fi
+        fi
+    fi
+    exit 0
+fi
+exit 0
+fi
+
+LIMIT=8  #上限   
+    a=0
+    b=$1
+    b=$(($b-1))
+#echo "$b"
+if [ $1 -le "$LIMIT" ]
+then   
+   while [ $a -le $b ]
+   do
+    a=$(($a+1))
+    # echo -n "$a "
+    gnome-terminal -e "sshpass -p $passwd ssh $cout"
+done
+fi
+exit 0
+BLOCK
